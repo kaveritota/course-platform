@@ -15,7 +15,7 @@ const Register = () => {
     setError("");
 
     try {
-      await axios.post("http://localhost:3000/api/auth/register", {
+      await axios.post("https://course-platform-okkm.onrender.com/api/auth/register", {
         name,
         email,
         password,

@@ -7,7 +7,7 @@ const CourseList = () => {
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const res = await axios.get("http://localhost:3000/api/courses", {
+      const res = await axios.get("https://course-platform-okkm.onrender.com/api/courses", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -21,7 +21,7 @@ const CourseList = () => {
   const handleEnroll = async (courseId) => {
     try {
       await axios.post(
-        `http://localhost:3000/api/enrollments/${courseId}`,
+        `https://course-platform-okkm.onrender.com/api/enrollments/${courseId}`,
         {},
         {
           headers: {

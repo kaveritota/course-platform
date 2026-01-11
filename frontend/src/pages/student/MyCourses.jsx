@@ -8,7 +8,7 @@ const MyCourses = () => {
   useEffect(() => {
     const fetchMyCourses = async () => {
       const res = await axios.get(
-        "http://localhost:3000/api/enrollments/mycources",
+        "https://course-platform-okkm.onrender.com/api/enrollments/mycources",
         {
           headers: {
             Authorization: `Bearer ${token}`,

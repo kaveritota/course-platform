@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:3000/api/users";
+const API = "https://course-platform-okkm.onrender.com/api/users";
 
 export const getAllUsers = async (token) => {
   const res = await axios.get(API, {

@@ -19,7 +19,7 @@ const ForgotPassword = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/auth/forgot-password",
+        "https://course-platform-okkm.onrender.com/api/auth/forgot-password",
         {
           email,
           newPassword,
