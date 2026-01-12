@@ -13,6 +13,9 @@ const MyCourses = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+        },
+        {
+          withCredentials: true,
         }
       );
       setEnrollments(res.data);

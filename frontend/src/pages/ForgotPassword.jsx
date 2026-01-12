@@ -20,9 +20,11 @@ const ForgotPassword = () => {
     try {
       const res = await axios.post(
         "https://course-platform-okkm.onrender.com/api/auth/forgot-password",
-        {
+        
           email,
           newPassword,
+        {
+        withCredentials: true,
         }
       );
 

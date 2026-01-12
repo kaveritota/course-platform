@@ -18,7 +18,13 @@ const Login = () => {
       const res = await axios.post("https://course-platform-okkm.onrender.com/api/auth/login", {
         email,
         password,
-      });
+        
+           
+        },
+        {
+          withCredentials: true,
+        }
+      );
 
       const { accessToken, user } = res.data;
 

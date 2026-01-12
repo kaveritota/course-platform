@@ -12,19 +12,28 @@ const enrollmentRoutes = require("./routes/enrollmentRoutes");
 const app = express();
 
 //  CORS FIX
-app.use(
+ app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://course-platform-jq9r.vercel.app/",
-    ],
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // allow Postman, mobile
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "https://course-platform-jq9r.vercel.app/",
+      ];
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
   })
 );
 
-app.options("*", cors());
+
+app.options(/.*/, cors());
 app.use(cors());
 
 

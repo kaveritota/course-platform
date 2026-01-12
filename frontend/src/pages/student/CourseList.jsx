@@ -11,7 +11,11 @@ const CourseList = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      });
+         
+      },
+    {
+      withCredentials: true,
+    });
       setCourses(res.data);
     };
 
@@ -27,6 +31,9 @@ const CourseList = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+        },
+        {
+          withCredentials: true,
         }
       );
 
