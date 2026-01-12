@@ -25,7 +25,9 @@ app.use(
 );
 
 //  Preflight support
-app.options("*", cors());
+//app.options("*", cors());
+app.options('/*', cors());
+
 
 // Middleware
 app.use(express.json());
