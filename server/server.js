@@ -12,6 +12,7 @@ const enrollmentRoutes = require("./routes/enrollmentRoutes");
 const app = express();
 
 //  CORS FIX
+<<<<<<< HEAD
  app.use(
   cors({
     origin: function (origin, callback) {
@@ -20,22 +21,59 @@ const app = express();
         "http://localhost:5173",
         "https://course-platform-jq9r.vercel.app/",
       ];
+=======
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:5173",
+//       "https://course-platform-jq9r.vercel.app/",
+//     ],
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true,
+//   })
+// );
+
+// app.options("*", cors());
+// app.use(cors());
+
+/* ✅ FIXED CORS */
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://course-platform-jq9r.vercel.app"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow REST tools like Postman
+      if (!origin) return callback(null, true);
+
+>>>>>>> f1667739010275ba923db6f87d7fe291d1741e1e
       if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     },
+<<<<<<< HEAD
     credentials: true,
+=======
+>>>>>>> f1667739010275ba923db6f87d7fe291d1741e1e
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
+<<<<<<< HEAD
 
 app.options(/.*/, cors());
 app.use(cors());
 
+=======
+// REQUIRED for preflight
+app.options("*", cors());
+>>>>>>> f1667739010275ba923db6f87d7fe291d1741e1e
 
 
 // Middleware
