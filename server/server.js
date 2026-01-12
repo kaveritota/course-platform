@@ -1,5 +1,4 @@
-// server.js
-const express = require("express");
+ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -12,22 +11,26 @@ const enrollmentRoutes = require("./routes/enrollmentRoutes");
 
 const app = express();
 
-//  CORS (Frontend → Backend)
+//  CORS FIX
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
       "https://course-platform-9z2x.vercel.app",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
+
+//  Preflight support
+app.options("*", cors());
 
 // Middleware
 app.use(express.json());
 
-// Connect DB
+// DB
 connectDB();
 
 // Routes
@@ -36,12 +39,12 @@ app.use("/api/users", userRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/enrollments", enrollmentRoutes);
 
-// Health check (VERY useful on Render)
+// Health check
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// Global error handler
+// Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: "Something went wrong!" });
@@ -51,5 +54,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-module.exports = app;
