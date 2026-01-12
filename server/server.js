@@ -16,8 +16,6 @@ const enrollmentRoutes = require('./routes/enrollmentRoutes');
 const app = express();
 
 // Middleware
-const cors = require("cors");
-
 app.use(
   cors({
     origin: [
