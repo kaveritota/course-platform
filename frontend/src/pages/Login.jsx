@@ -21,9 +21,7 @@ const Login = () => {
         
            
         },
-        {
-          withCredentials: true,
-        }
+  
       );
 
       const { accessToken, user } = res.data;

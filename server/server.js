@@ -1,4 +1,4 @@
- const express = require("express");
+const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -11,19 +11,19 @@ const enrollmentRoutes = require("./routes/enrollmentRoutes");
 
 const app = express();
 
-// SIMPLE WORKING CORS (NO CONFUSION)
+ 
 app.use(
   cors({
-    origin: true,
-    credentials: true,
+    origin: [
+      "http://localhost:5173",
+      "https://course-platform-9z2x.vercel.app",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Preflight (Node 22 safe)
 app.options(/.*/, cors());
-
 // Middleware
 app.use(express.json());
 

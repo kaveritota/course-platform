@@ -23,9 +23,7 @@ const ForgotPassword = () => {
         
           email,
           newPassword,
-        {
-        withCredentials: true,
-        }
+         
       );
 
       setMessage(res.data.message || "Password updated successfully");

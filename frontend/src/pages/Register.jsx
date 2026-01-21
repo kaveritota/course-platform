@@ -22,9 +22,7 @@ const Register = () => {
         role,
          
       },
-    {
-      withCredentials: true,
-    });
+     );
 
       alert("Registration successful. Please login.");
       navigate("/");
